@@ -28,7 +28,7 @@
         .geometric-accent {
             width: 60px;
             height: 5px;
-            background: linear-gradient(90deg, #ffffff, #1e88e5);
+            background: linear-gradient(90deg, #ff4444, #cc1100);
             border-radius: 2px;
             margin: 0 auto 20px;
         }
@@ -73,7 +73,7 @@
         .message-box {
             background: linear-gradient(180deg, #1e1e1e, #2a2a2a);
             padding: 20px;
-            border-left: 4px solid #1e88e5;
+            border-left: 4px solid #ff4444;
             border: 1px solid #3a3a3a;
             border-radius: 6px;
             font-size: 16px;
@@ -85,18 +85,26 @@
         .button {
             display: inline-block;
             padding: 14px 40px;
-            background: linear-gradient(90deg, #1e88e5, #1565c0);
+            background: linear-gradient(90deg, #ff4444, #cc1100);
             color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 700;
-            border: 2px solid #ffffff;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ff6666;
+            box-shadow: 0 3px 8px rgba(255, 68, 68, 0.3);
             text-align: center;
             margin: 30px auto;
             display: block;
             width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: linear-gradient(90deg, #ff6666, #ff4444);
+            border-color: #ff8888;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
         }
 
         .footer {
@@ -118,9 +126,13 @@
         }
 
         .footer a {
-            color: #1e88e5;
+            color: #ff6666;
             text-decoration: none;
             font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #ff8888;
         }
 
         .social-links {
@@ -132,6 +144,12 @@
             height: 30px;
             vertical-align: middle;
             margin: 0 10px;
+            filter: brightness(0) saturate(100%) invert(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .social-icon:hover {
+            filter: brightness(0) saturate(100%) invert(62%) sepia(77%) saturate(3270%) hue-rotate(349deg) brightness(101%) contrast(103%);
         }
 
         @media only screen and (max-width: 600px) {

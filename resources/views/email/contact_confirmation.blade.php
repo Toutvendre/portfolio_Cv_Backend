@@ -12,7 +12,7 @@
             padding: 0;
             margin: 0;
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .container {
@@ -28,7 +28,7 @@
         .geometric-accent {
             width: 60px;
             height: 5px;
-            background: linear-gradient(90deg, #ffffff, #1e88e5);
+            background: linear-gradient(90deg, #ff4444, #cc1100);
             border-radius: 2px;
             margin: 0 auto 20px;
         }
@@ -59,10 +59,17 @@
             margin: 0 0 15px;
         }
 
+        .greeting {
+            font-size: 18px;
+            color: #ff6666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
         .message-box {
             background: linear-gradient(180deg, #1e1e1e, #2a2a2a);
             padding: 20px;
-            border-left: 4px solid #1e88e5;
+            border-left: 4px solid #ff4444;
             border: 1px solid #3a3a3a;
             border-radius: 6px;
             font-size: 16px;
@@ -72,21 +79,48 @@
             margin: 20px 0;
         }
 
+        .service-highlight {
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
         .button {
             display: inline-block;
             padding: 14px 40px;
-            background: linear-gradient(90deg, #1e88e5, #1565c0);
+            background: linear-gradient(90deg, #ff4444, #cc1100);
             color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 700;
-            border: 2px solid #ffffff;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ff6666;
+            box-shadow: 0 3px 8px rgba(255, 68, 68, 0.3);
             text-align: center;
             margin: 20px auto;
             display: block;
             width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: linear-gradient(90deg, #ff6666, #ff4444);
+            border-color: #ff8888;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .friendly-note {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 15px;
+            color: #ff9999;
+            text-align: center;
         }
 
         .footer {
@@ -108,9 +142,13 @@
         }
 
         .footer a {
-            color: #1e88e5;
+            color: #ff6666;
             text-decoration: none;
             font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #ff8888;
         }
 
         .social-links {
@@ -122,6 +160,12 @@
             height: 30px;
             vertical-align: middle;
             margin: 0 10px;
+            filter: brightness(0) saturate(100%) invert(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .social-icon:hover {
+            filter: brightness(0) saturate(100%) invert(62%) sepia(77%) saturate(3270%) hue-rotate(349deg) brightness(101%) contrast(103%);
         }
 
         @media only screen and (max-width: 600px) {
@@ -142,6 +186,10 @@
 
             p {
                 font-size: 15px;
+            }
+
+            .greeting {
+                font-size: 16px;
             }
 
             .message-box {
@@ -169,13 +217,23 @@
 <body>
     <div class="container">
         <div class="geometric-accent"></div>
-        <h1>Merci pour votre message, {{ $formData['prenom'] }} !</h1>
-        <p class="subtitle">Nous avons bien reçu votre demande.</p>
-        <p>Votre demande concerne le service : <strong>{{ $formData['service'] }}</strong>.</p>
-        <p>Nous vous contacterons dans les plus brefs délais.</p>
+        <h1>Merci pour votre message, {{ $formData['prenom'] }} ! 🎉</h1>
+        <p class="subtitle">Nous avons bien reçu votre demande et nous sommes ravis de vous aider.</p>
+
+        <p class="greeting">Bonjour {{ $formData['prenom'] }},</p>
+
+        <p>Quelle joie de recevoir votre message ! Je suis vraiment enthousiaste à l'idée de travailler avec vous.</p>
+
+        <p>Votre demande concerne le service : <span class="service-highlight">{{ $formData['service'] }}</span></p>
+
+        <p>Je vais examiner votre demande avec attention et je vous contacterai dans les plus brefs délais pour discuter
+            de votre projet.</p>
+
         <p>Voici un rappel de votre message :</p>
         <div class="message-box">{{ $formData['message'] }}</div>
-        <a href="mailto:{{ $formData['email'] }}" class="button">Nous contacter</a>
+
+        <a href="mailto:{{ $formData['email'] }}" class="button">✉️ Me contacter directement</a>
+
         <div class="footer">
             <p><strong>KI Brou Alexis</strong><br>Développeur Web | Visionnaire Digital</p>
             <div class="social-links">
@@ -192,7 +250,8 @@
                         class="social-icon">
                 </a>
             </div>
-            <p>Depuis <a href="{{ env('APP_URL') }}">mon portfolio</a> | © {{ now()->year }} KI Brou Alexis</p>
+            <p>Merci de votre confiance ! 🚀<br>
+                Depuis <a href="{{ env('APP_URL') }}">mon portfolio</a> | © {{ now()->year }} KI Brou Alexis</p>
         </div>
     </div>
 </body>
