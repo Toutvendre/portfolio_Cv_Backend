@@ -107,11 +107,6 @@
             box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
         }
 
-        a[href^="mailto:"] {
-            color: #ffffff !important;
-            text-decoration: none;
-        }
-
         .footer {
             margin-top: 40px;
             font-size: 12px;

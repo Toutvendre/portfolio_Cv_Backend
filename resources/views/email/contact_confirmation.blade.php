@@ -105,12 +105,6 @@
             transition: all 0.3s ease;
         }
 
-        a[href^="mailto:"] {
-            color: #ffffff !important;
-            text-decoration: none;
-        }
-
-
         .button:hover {
             background: linear-gradient(90deg, #ff6666, #ff4444);
             border-color: #ff8888;
